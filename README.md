@@ -107,7 +107,6 @@ SublimeText Google 翻译插件 支持 ST 2 和 3，支持各种代理！**GFW**
 
 **当前版本:** 2.0.0
 
-![Sublime Text Google Translate Plugin](/GoogleTranslate.gif)
 ------------------
 
 安装:
