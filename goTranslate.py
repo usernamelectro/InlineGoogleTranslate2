@@ -4,38 +4,51 @@
 
 import sublime
 import sublime_plugin
-try:
-    from urllib import urlopen, urlencode
-except:
-    from urllib.request import urlopen
-    from urllib.parse import urlencode
-from urllib.request import Request
 import json
-import re
+
+if sublime.version() < '3':
+    from core import *
+else:
+    from .core import *
 
 settings = sublime.load_settings("goTranslate.sublime-settings")
-api_url = 'http://translate.google.com.hk/translate_a/t?client=t&hl=en&ie=UTF-8&oe=UTF-8&multires=1&otf=2&ssel=0&tsel=0&sc=1&%s'
 
 class GoTranslateCommand(sublime_plugin.TextCommand):
     
-    def run(self, edit, source_language = settings.get("source_language"), target_language = settings.get("target_language")):
+    def run(self, edit, proxy_enable = settings.get("proxy_enable"), proxy_type = settings.get("proxy_type"), proxy_host = settings.get("proxy_host"), proxy_port = settings.get("proxy_port"), source_language = settings.get("source_language"), target_language = settings.get("target_language")):
         if not source_language:
             source_language = settings.get("source_language")
         if not target_language:
             target_language = settings.get("target_language")
+        if not proxy_enable:
+            proxy_enable = settings.get("proxy_enable")
+        if not proxy_type:
+            proxy_type = settings.get("proxy_type")
+        if not proxy_host:
+            proxy_host = settings.get("proxy_host")
+        if not proxy_port:
+            proxy_port = settings.get("proxy_port")
+        target_type = settings.get("target_type")
 
         for region in self.view.sel():
             if not region.empty():
 
                 v = self.view
-                selection = v.substr(region)
+                selection = v.substr(region).encode('utf-8')
+                translate = GoogleTranslate(proxy_enable, proxy_type, proxy_host, proxy_port, source_language, target_language)
 
-                result = translate(selection, source_language, target_language)
+                if not target_language:
+                    self.view.run_command("go_translate_to")
+                    return                          
+                else:
+                    result = translate.translate(selection, target_type)
 
-                text = (json.dumps(result[0][0][0], ensure_ascii = False)).strip('"').replace('\\n', "\n").replace('\\t', "\t").replace('\\"', '"')
-
-                # print (text)
-                v.replace(edit, region, text)
+                v.replace(edit, region, result)
+                if not source_language:
+                    detected = 'Auto'
+                else:
+                    detected = source_language
+                sublime.status_message(u'Done! (translate '+detected+' --> '+target_language+')')
 
 
     def is_visible(self):
@@ -44,24 +57,60 @@ class GoTranslateCommand(sublime_plugin.TextCommand):
                 return True
         return False
 
+class GoTranslateInfoCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        settings = sublime.load_settings("goTranslate.sublime-settings")
+        source_language = settings.get("source_language")
+        target_language = settings.get("target_language")
+        proxy_enable = settings.get("proxy_enable")
+        proxy_type = settings.get("proxy_type")
+        proxy_host = settings.get("proxy_host")
+        proxy_port = settings.get("proxy_port")
 
-def translate(text, sl, tl):
-        if sl:
-            data = urlencode({'text': text, 'sl': sl, 'tl': tl})
-        else:
-            data = urlencode({'text': text, 'sl': 'auto', 'tl': tl})
+        v = self.view
+        selection = v.substr(v.sel()[0])
 
-        request = Request(api_url % data)
-        request.add_header('User-Agent', 'Mozilla/5.0')
-        if sublime.version() < '3':
-            result = urlopen(request).read()
-            fixed_json = re.sub(r',{2,}', ',', result).replace(',]', ']')
-            jsons = json.loads(fixed_json.decode("utf-8"))
-        else:
-            result = urlopen(request).read().decode("utf-8")
-            fixed_json = re.sub(r',{2,}', ',', result).replace(',]', ']')
-            jsons = json.loads(fixed_json)
-        return jsons
+        translate = GoogleTranslate(proxy_enable, proxy_type, proxy_host, proxy_port, source_language, target_language)
+
+        text = (json.dumps(translate.langs, ensure_ascii = False, indent = 2))
+
+        v.replace(edit, v.sel()[0], text)
+
+class GoTranslateToCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        settings = sublime.load_settings("goTranslate.sublime-settings")
+        source_language = settings.get("source_language")
+        target_language = settings.get("target_language")
+        proxy_enable = settings.get("proxy_enable")
+        proxy_type = settings.get("proxy_type")
+        proxy_host = settings.get("proxy_host")
+        proxy_port = settings.get("proxy_port")
+
+        v = self.view
+        selection = v.substr(v.sel()[0])
+
+        translate = GoogleTranslate(proxy_enable, proxy_type, proxy_host, proxy_port, source_language, target_language)
+
+        text = (json.dumps(translate.langs['langs'], ensure_ascii = False))
+        continents = json.loads(text)
+        lkey = []
+        ltrasl = []
+
+        for (slug, title) in continents.items():
+            lkey.append(slug)
+            ltrasl.append(title+' ['+slug+']')
+
+        def on_done(index):
+            if index >= 0:
+                self.view.run_command("go_translate", {"target_language": lkey[index]})
+
+        self.view.window().show_quick_panel(ltrasl, on_done)
+
+    def is_visible(self):
+        for region in self.view.sel():
+            if not region.empty():
+                return True
+        return False
 
 
 def plugin_loaded():
