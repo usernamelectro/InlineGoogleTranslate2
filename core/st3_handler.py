@@ -2,9 +2,10 @@
 # coding:utf-8
 # https://github.com/MtimerCMS/SublimeText-Google-Translate-Plugin
 
+import sublime
 from urllib.request import HTTPHandler, HTTPSHandler
 from http.client import HTTPConnection, HTTPSConnection
-import st3_socks
+from GoogleTranslate.core import st3_socks
 import ssl
 
 class SocksiPyConnection(HTTPConnection):
@@ -13,7 +14,7 @@ class SocksiPyConnection(HTTPConnection):
         HTTPConnection.__init__(self, *args, **kwargs)
 
     def connect(self):
-        self.sock = socks.socksocket()
+        self.sock = st3_socks.socksocket()
         self.sock.setproxy(*self.proxyargs)
         if type(self.timeout) in (int, float):
             self.sock.settimeout(self.timeout)
@@ -25,7 +26,7 @@ class SocksiPyConnectionS(HTTPSConnection):
         HTTPSConnection.__init__(self, *args, **kwargs)
 
     def connect(self):
-        sock = socks.socksocket()
+        sock = st3_socks.socksocket()
         sock.setproxy(*self.proxyargs)
         if type(self.timeout) in (int, float):
             sock.settimeout(self.timeout)
