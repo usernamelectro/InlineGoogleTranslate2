@@ -2,7 +2,7 @@
 # coding:utf-8
 # https://github.com/MtimerCMS/SublimeText-Google-Translate-Plugin
 
-__version__ = "2.0"
+__version__ = "2.0.0"
 
 import sublime
 try:
@@ -11,12 +11,14 @@ except:
     from urllib.request import urlopen, build_opener, Request
     from urllib.parse import urlencode, quote
 from json import loads
+import re
 if sublime.version() < '3':
     from urllib2 import urlopen, build_opener, Request
-    import st2_handler, st2_socks
+    from handler_st2 import *
+    from socks_st2 import *
 else:
-    from GoogleTranslate.core import st3_handler, st3_socks
-import re
+    from .handler_st3 import *
+    from .socks_st3 import *
 
 
 class GoogleTranslateException(Exception):
@@ -99,22 +101,13 @@ class GoogleTranslate(object):
         headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
 
         if self.proxyok:
-            if sublime.version() < '3':
-                if self.proxytp == 'socks5':
-                    opener = build_opener(st2_handler.SocksiPyHandler_old(st2_socks.PROXY_TYPE_SOCKS5, self.proxyho, int(self.proxypo)))
-                else:
-                    if self.proxytp == 'socks4':
-                        opener = build_opener(st2_handler.SocksiPyHandler_old(st2_socks.PROXY_TYPE_SOCKS4, self.proxyho, int(self.proxypo)))
-                    else:
-                        opener = build_opener(st2_handler.SocksiPyHandler_old(st2_socks.PROXY_TYPE_HTTP, self.proxyho, int(self.proxypo)))
+            if self.proxytp == 'socks5':
+                opener = build_opener(SocksiPyHandler(PROXY_TYPE_SOCKS5, self.proxyho, int(self.proxypo)))
             else:
-                if self.proxytp == 'socks5':
-                    opener = build_opener(st3_handler.SocksiPyHandler(st3_socks.PROXY_TYPE_SOCKS5, self.proxyho, int(self.proxypo)))
+                if self.proxytp == 'socks4':
+                    opener = build_opener(SocksiPyHandler(PROXY_TYPE_SOCKS4, self.proxyho, int(self.proxypo)))
                 else:
-                    if self.proxytp == 'socks4':
-                        opener = build_opener(st3_handler.SocksiPyHandler(st3_socks.PROXY_TYPE_SOCKS4, self.proxyho, int(self.proxypo)))
-                    else:
-                        opener = build_opener(st3_handler.SocksiPyHandler(st3_socks.PROXY_TYPE_HTTP, self.proxyho, int(self.proxypo)))
+                    opener = build_opener(SocksiPyHandler(PROXY_TYPE_HTTP, self.proxyho, int(self.proxypo)))
             req = Request(self.api_urls['translate']+"&sl=%s&tl=%s&text=%s" % (self.source, self.target, escaped_source), headers = headers)
             result = opener.open(req, timeout = 5).read()
             json = result

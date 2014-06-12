@@ -15,9 +15,9 @@ Install:
 
 **With Git:** Clone the repository in your Sublime Text "Packages" directory:
 
-    git clone https://github.com/MtimerCMS/SublimeText-Google-Translate-Plugin GoogleTranslate
+    git clone https://github.com/MtimerCMS/SublimeText-Google-Translate-Plugin
 
-Folder name must be **GoogleTranslate** !!
+Folder name must be **SublimeText-Google-Translate-Plugin** !!
 
 The "Packages" directory is located at:
 
@@ -117,9 +117,9 @@ SublimeText Google 翻译插件 支持 ST 2 和 3，支持各种代理！**GFW**
 
 **用 Git:** 克隆岛 Sublime Text "程序包" 目录:
 
-    git clone https://github.com/MtimerCMS/SublimeText-Google-Translate-Plugin GoogleTranslate
+    git clone https://github.com/MtimerCMS/SublimeText-Google-Translate-Plugin
 
-目录名必须为 **GoogleTranslate** !!
+目录名必须为 **SublimeText-Google-Translate-Plugin** !!
 
 插件将位于 "程序包" 目录:
 

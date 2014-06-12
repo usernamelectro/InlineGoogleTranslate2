@@ -7,9 +7,9 @@ import sublime_plugin
 import json
 
 if sublime.version() < '3':
-    from core import *
+    from core.translate import *
 else:
-    from .core import *
+    from .core.translate import *
 
 settings = sublime.load_settings("goTranslate.sublime-settings")
 

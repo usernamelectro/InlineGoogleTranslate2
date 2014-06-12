@@ -1,6 +1,0 @@
-import sublime
-
-if sublime.version() < '3':
-    from translate import *
-else:
-    from GoogleTranslate.core.translate import *
