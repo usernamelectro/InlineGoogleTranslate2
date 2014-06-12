@@ -4,7 +4,7 @@
 
 import urllib2
 import httplib
-from GoogleTranslate.core import socks
+import st2_socks
 import ssl
 
 class SocksiPyConnection_old(httplib.HTTPConnection):
@@ -13,7 +13,7 @@ class SocksiPyConnection_old(httplib.HTTPConnection):
         httplib.HTTPConnection.__init__(self, *args, **kwargs)
 
     def connect(self):
-        self.sock = socks.socksocket()
+        self.sock = st2_socks.socksocket()
         self.sock.setproxy(*self.proxyargs)
         if type(self.timeout) in (int, float):
             self.sock.settimeout(self.timeout)
@@ -25,7 +25,7 @@ class SocksiPyConnectionS_old(httplib.HTTPSConnection):
         httplib.HTTPSConnection.__init__(self, *args, **kwargs)
 
     def connect(self):
-        sock = socks.socksocket()
+        sock = st2_socks.socksocket()
         sock.setproxy(*self.proxyargs)
         if type(self.timeout) in (int, float):
             sock.settimeout(self.timeout)

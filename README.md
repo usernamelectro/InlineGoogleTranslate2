@@ -66,6 +66,7 @@ Tips:
 Overview your language code:
 
 * press `Google Translate Print the available translate variants` in context menu
+* press `ctrl + ~` to see output errors in console
 
 Features:
 =======
@@ -166,7 +167,8 @@ SublimeText Google 翻译插件 支持 ST 2 和 3，支持各种代理！**GFW**
 
 查看你的语言代码:
 
-* 在邮件面板中点击 `Google Translate Print the available translate variants`
+* 在右键面板中点击 `Google Translate Print the available translate variants`
+* 按 `ctrl+~` 在控制台查看输出错误
 
 功能:
 ====

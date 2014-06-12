@@ -8,18 +8,15 @@ import sublime
 try:
     from urllib import urlopen, urlencode, quote
 except:
-    from urllib.request import urlopen, HTTPHandler, HTTPSHandler, build_opener, Request
+    from urllib.request import urlopen, build_opener, Request
     from urllib.parse import urlencode, quote
 from json import loads
-from GoogleTranslate.core import socks
 if sublime.version() < '3':
-    import urllib2
-    import httplib
-    from GoogleTranslate.core import st2
+    from urllib2 import urlopen, build_opener, Request
+    import st2_handler, st2_socks
 else:
-    import http.client
+    from GoogleTranslate.core import st3_handler, st3_socks
 import re
-import ssl
 
 
 class GoogleTranslateException(Exception):
@@ -104,20 +101,20 @@ class GoogleTranslate(object):
         if self.proxyok:
             if sublime.version() < '3':
                 if self.proxytp == 'socks5':
-                    opener = build_opener(SocksiPyHandler_old(socks.PROXY_TYPE_SOCKS5, self.proxyho, int(self.proxypo)))
+                    opener = build_opener(st2_handler.SocksiPyHandler_old(st2_socks.PROXY_TYPE_SOCKS5, self.proxyho, int(self.proxypo)))
                 else:
                     if self.proxytp == 'socks4':
-                        opener = build_opener(SocksiPyHandler_old(socks.PROXY_TYPE_SOCKS4, self.proxyho, int(self.proxypo)))
+                        opener = build_opener(st2_handler.SocksiPyHandler_old(st2_socks.PROXY_TYPE_SOCKS4, self.proxyho, int(self.proxypo)))
                     else:
-                        opener = build_opener(SocksiPyHandler_old(socks.PROXY_TYPE_HTTP, self.proxyho, int(self.proxypo)))
+                        opener = build_opener(st2_handler.SocksiPyHandler_old(st2_socks.PROXY_TYPE_HTTP, self.proxyho, int(self.proxypo)))
             else:
                 if self.proxytp == 'socks5':
-                    opener = build_opener(SocksiPyHandler(socks.PROXY_TYPE_SOCKS5, self.proxyho, int(self.proxypo)))
+                    opener = build_opener(st3_handler.SocksiPyHandler(st3_socks.PROXY_TYPE_SOCKS5, self.proxyho, int(self.proxypo)))
                 else:
                     if self.proxytp == 'socks4':
-                        opener = build_opener(SocksiPyHandler(socks.PROXY_TYPE_SOCKS4, self.proxyho, int(self.proxypo)))
+                        opener = build_opener(st3_handler.SocksiPyHandler(st3_socks.PROXY_TYPE_SOCKS4, self.proxyho, int(self.proxypo)))
                     else:
-                        opener = build_opener(SocksiPyHandler(socks.PROXY_TYPE_HTTP, self.proxyho, int(self.proxypo)))
+                        opener = build_opener(st3_handler.SocksiPyHandler(st3_socks.PROXY_TYPE_HTTP, self.proxyho, int(self.proxypo)))
             req = Request(self.api_urls['translate']+"&sl=%s&tl=%s&text=%s" % (self.source, self.target, escaped_source), headers = headers)
             result = opener.open(req, timeout = 5).read()
             json = result
@@ -204,49 +201,6 @@ class GoogleTranslate(object):
             except KeyError:
                 sz=s.search(htmlstr)
         return htmlstr
-
-class SocksiPyConnection(http.client.HTTPConnection):
-    def __init__(self, proxytype, proxyaddr, proxyport=None, rdns=True, username=None, password=None, *args, **kwargs):
-        self.proxyargs = (proxytype, proxyaddr, proxyport, rdns, username, password)
-        http.client.HTTPConnection.__init__(self, *args, **kwargs)
-
-    def connect(self):
-        self.sock = socks.socksocket()
-        self.sock.setproxy(*self.proxyargs)
-        if type(self.timeout) in (int, float):
-            self.sock.settimeout(self.timeout)
-        self.sock.connect((self.host, self.port))
-
-class SocksiPyConnectionS(http.client.HTTPSConnection):
-    def __init__(self, proxytype, proxyaddr, proxyport=None, rdns=True, username=None, password=None, *args, **kwargs):
-        self.proxyargs = (proxytype, proxyaddr, proxyport, rdns, username, password)
-        http.client.HTTPSConnection.__init__(self, *args, **kwargs)
-
-    def connect(self):
-        sock = socks.socksocket()
-        sock.setproxy(*self.proxyargs)
-        if type(self.timeout) in (int, float):
-            sock.settimeout(self.timeout)
-        sock.connect((self.host, self.port))
-        self.sock = ssl.wrap_socket(sock, self.key_file, self.cert_file)
-            
-class SocksiPyHandler(HTTPHandler, HTTPSHandler):
-    def __init__(self, *args, **kwargs):
-        self.args = args
-        self.kw = kwargs
-        HTTPHandler.__init__(self)
-
-    def http_open(self, req):
-        def build(host, port=None, strict=None, timeout=5):    
-            conn = SocksiPyConnection(*self.args, host=host, port=port, strict=strict, timeout=timeout, **self.kw)
-            return conn
-        return self.do_open(build, req)
-
-    def https_open(self, req):
-        def build(host, port=None, strict=None, timeout=5):    
-            conn = SocksiPyConnectionS(*self.args, host=host, port=port, strict=strict, timeout=timeout, **self.kw)
-            return conn
-        return self.do_open(build, req)
 
 if __name__ == "__main__":
     import doctest

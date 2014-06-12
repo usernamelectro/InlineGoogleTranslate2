@@ -1,5 +1,5 @@
 {
-	"source_language": "ru",// Russian
+	"source_language": "en",// Russian
     "target_language": "zh-CN",// English	
     "target_type": "html",	// or plain or html
     "proxy_enable": "no",	// enable or disable proxy
