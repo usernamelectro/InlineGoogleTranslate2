@@ -43,13 +43,13 @@ Set Target Language AND Source Language [default is auto detect] in user setting
 
 
     {     
-		"source_language": "en", // default is 'auto'
-    	"target_language": "zh-CN", // must be specified
-    	"target_type": "html",	// or plain or html
-    	"proxy_enable": "yes",	// enable or disable proxy
-    	"proxy_type": "socks5",	// socks4 or socks5 or http
-    	"proxy_host": "127.0.0.1",	// eg. 127.0.0.1
-    	"proxy_port": "9050"	// eg. 9050
+        "source_language": "en", // default is 'auto'
+        "target_language": "zh-CN", // must be specified
+        "target_type": "html",  // or plain or html
+        "proxy_enable": "yes",  // enable or disable proxy
+        "proxy_type": "socks5", // socks4 or socks5 or http
+        "proxy_host": "127.0.0.1",  // eg. 127.0.0.1
+        "proxy_port": "9050"    // eg. 9050
     }
 
 
@@ -145,13 +145,13 @@ SublimeText Google 翻译插件 支持 ST 2 和 3，支持各种代理！**GFW**
 
 
     {     
-		"source_language": "en", // 默认是 'auto'
-    	"target_language": "zh-CN", // 必需填写
-    	"target_type": "html",	// 输出格式，plain 或者 html 格式
-    	"proxy_enable": "yes",	// 开启或关闭代理
-    	"proxy_type": "socks5",	// socks4 或者 socks5 或者 http
-    	"proxy_host": "127.0.0.1",	// 比如 127.0.0.1
-    	"proxy_port": "9050"	// 比如 9050
+        "source_language": "en", // 默认是 'auto'
+        "target_language": "zh-CN", // 必需填写
+        "target_type": "html",  // 输出格式，plain 或者 html 格式
+        "proxy_enable": "yes",  // 开启或关闭代理
+        "proxy_type": "socks5", // socks4 或者 socks5 或者 http
+        "proxy_host": "127.0.0.1",  // 比如 127.0.0.1
+        "proxy_port": "9050"    // 比如 9050
     }
 
 
