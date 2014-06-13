@@ -35,7 +35,7 @@
                             {
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/SublimeText-Google-Translate-Plugin/goTranslate.sublime-settings",
+                                    "file": "${packages}/Inline Google Translate/goTranslate.sublime-settings",
                                     "platform": "OSX"
                                 },
                                 "caption": "Settings – Default"
@@ -43,7 +43,7 @@
                             {
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/SublimeText-Google-Translate-Plugin/goTranslate.sublime-settings",
+                                    "file": "${packages}/Inline Google Translate/goTranslate.sublime-settings",
                                     "platform": "Linux"
                                 },
                                 "caption": "Settings – Default"
@@ -51,7 +51,7 @@
                             {
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/SublimeText-Google-Translate-Plugin/goTranslate.sublime-settings",
+                                    "file": "${packages}/Inline Google Translate/goTranslate.sublime-settings",
                                     "platform": "Windows"
                                 },
                                 "caption": "Settings – Default"
@@ -65,7 +65,7 @@
                             {
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/SublimeText-Google-Translate-Plugin/Default (OSX).sublime-keymap",
+                                    "file": "${packages}/Inline Google Translate/Default (OSX).sublime-keymap",
                                     "platform": "OSX"
                                 },
                                 "caption": "Key Bindings – Default"
@@ -73,7 +73,7 @@
                             {
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/SublimeText-Google-Translate-Plugin/Default (Linux).sublime-keymap",
+                                    "file": "${packages}/Inline Google Translate/Default (Linux).sublime-keymap",
                                     "platform": "Linux"
                                 },
                                 "caption": "Key Bindings – Default"
@@ -81,7 +81,7 @@
                             {
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/SublimeText-Google-Translate-Plugin/Default (Windows).sublime-keymap",
+                                    "file": "${packages}/Inline Google Translate/Default (Windows).sublime-keymap",
                                     "platform": "Windows"
                                 },
                                 "caption": "Key Bindings – Default"
