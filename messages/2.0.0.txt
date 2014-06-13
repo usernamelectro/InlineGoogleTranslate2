@@ -46,7 +46,7 @@ Set Target Language AND Source Language [default is auto detect] in user setting
 
     {     
         "source_language": "", // eg. en, default is 'auto detect'
-        "target_language": "zh-CN", // must be specified
+        "target_language": "", // default is en
         "target_type": "html",  // or plain or html
         "proxy_enable": "yes",  // enable or disable proxy
         "proxy_type": "socks5", // socks4 or socks5 or http
@@ -149,8 +149,8 @@ SublimeText Google 翻译插件 支持 ST 2 和 3，支持各种代理！**GFW**
 
 
     {     
-        "source_language": "en", // 默认是 'auto'
-        "target_language": "zh-CN", // 必需填写
+        "source_language": "", // 默认是 '自动检测'
+        "target_language": "", // 默认是 en  英文
         "target_type": "html",  // 输出格式，plain 或者 html 格式
         "proxy_enable": "yes",  // 开启或关闭代理
         "proxy_type": "socks5", // socks4 或者 socks5 或者 http
