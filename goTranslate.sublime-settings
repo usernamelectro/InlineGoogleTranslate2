@@ -1,6 +1,6 @@
 {
-	"source_language": "en",// Russian
-    "target_language": "zh-CN",// English	
+	"source_language": "",// Auto detect if leave blank
+    "target_language": "zh-CN",// Must be specified	
     "target_type": "html",	// or plain or html
     "proxy_enable": "no",	// enable or disable proxy
     "proxy_type": "socks5",	// socks4 or socks5 or http

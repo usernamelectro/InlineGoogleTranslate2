@@ -5,7 +5,7 @@ For SublimeText 2 & 3, support proxy `PROXY_TYPE_SOCKS5` `PROXY_TYPE_SOCKS4` `PR
 
 **Version:** 2.0.0
 
-![Sublime Text Google Translate Plugin](/GoogleTranslate.gif)
+![Sublime Text Google Translate Plugin](https://raw.githubusercontent.com/MtimerCMS/SublimeText-Google-Translate-Plugin/master/GoogleTranslate.gif)
 ------------------
 
 Install:
@@ -43,7 +43,7 @@ Set Target Language AND Source Language [default is auto detect] in user setting
 
 
     {     
-        "source_language": "en", // default is 'auto'
+        "source_language": "", // eg. en, default is 'auto detect'
         "target_language": "zh-CN", // must be specified
         "target_type": "html",  // or plain or html
         "proxy_enable": "yes",  // enable or disable proxy
