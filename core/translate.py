@@ -108,13 +108,13 @@ class GoogleTranslate(object):
                 else:
                     opener = build_opener(SocksiPyHandler(PROXY_TYPE_HTTP, self.proxyho, int(self.proxypo)))
             req = Request(self.api_urls['translate']+"&sl=%s&tl=%s&text=%s" % (self.source, self.target, escaped_source), headers = headers)
-            result = opener.open(req, timeout = 5).read()
+            result = opener.open(req, timeout = 2).read()
             json = result
 
         else:
             try:
                 req = Request(self.api_urls['translate']+"&sl=%s&tl=%s&text=%s" % (self.source, self.target, escaped_source), headers = headers)
-                result = urlopen(req, timeout = 5).read()
+                result = urlopen(req, timeout = 2).read()
                 json = result
             except IOError:
                 raise GoogleTranslateException(self.error_codes[501])
