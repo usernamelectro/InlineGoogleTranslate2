@@ -10,7 +10,10 @@
                 "id": "goTranslate",
                 "children":
                 [
-                    { "command": "go_translate", "caption": "Google Translate selected text" }
+                    { "command": "go_translate", "caption": "Google Translate selected text" },
+                    { "command": "go_translate_to", "caption": "Google Translate selected to..." },
+                    { "caption": "-" },
+                    { "command": "go_translate_info", "caption": "Print the available translate variants" }
                 ]
             }
         ]
