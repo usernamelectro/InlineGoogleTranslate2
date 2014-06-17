@@ -99,7 +99,7 @@ class GoogleTranslate(object):
         escaped_source = quote(text, '')
         headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
 
-        if self.proxyok:
+        if self.proxyok == 'yes':
             if self.proxytp == 'socks5':
                 opener = build_opener(SocksiPyHandler(PROXY_TYPE_SOCKS5, self.proxyho, int(self.proxypo)))
             else:
@@ -185,7 +185,7 @@ class GoogleTranslate(object):
         sz=s.search(htmlstr)
         while sz:
             entity=sz.group()
-            print (entity)
+            #print (entity)
             key=sz.group('name')
             try:
                 htmlstr=s.sub(r'</'+key.lower().strip()+'>',htmlstr,1)
