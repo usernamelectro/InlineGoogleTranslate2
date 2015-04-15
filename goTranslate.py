@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # author:mtimer
-# https://github.com/MtimerCMS/SublimeText-Google-Translate-Plugin
+# https://github.com/MTimer/SublimeText-Google-Translate-Plugin
 
 import sublime
 import sublime_plugin

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # coding:utf-8
-# https://github.com/MtimerCMS/SublimeText-Google-Translate-Plugin
+# https://github.com/MTimer/SublimeText-Google-Translate-Plugin
 
 from urllib.request import HTTPHandler, HTTPSHandler
 from http.client import HTTPConnection, HTTPSConnection

@@ -28,8 +28,6 @@ class GoogleTranslate(object):
     match_string =re.compile(
                         r"\,?\[" 
                            + string_pattern + r"\," 
-                           + string_pattern + r"\," 
-                           + string_pattern + r"\," 
                            + string_pattern
                         +r"\]")
 
@@ -44,7 +42,7 @@ class GoogleTranslate(object):
             'languages': None,
         }
         self.api_urls = {
-            'translate': 'https://translate.google.com/translate_a/t?client=t&ie=UTF-8&oe=UTF-8',
+            'translate': 'https://translate.google.com/translate_a/single?client=t&ie=UTF-8&oe=UTF-8&dt=t',
         }
         if not target_lang:
             raise GoogleTranslateException(self.error_codes[401])

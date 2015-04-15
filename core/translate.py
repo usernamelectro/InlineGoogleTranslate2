@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # coding:utf-8
-# https://github.com/MtimerCMS/SublimeText-Google-Translate-Plugin
+# https://github.com/MTimer/SublimeText-Google-Translate-Plugin
 
-__version__ = "2.0.0"
+__version__ = "2.1.0"
 
 import sublime
 try:
@@ -35,8 +35,6 @@ class GoogleTranslate(object):
     match_string =re.compile(
                         r"\,?\[" 
                            + string_pattern + r"\," 
-                           + string_pattern + r"\," 
-                           + string_pattern + r"\," 
                            + string_pattern
                         +r"\]")
 
@@ -51,7 +49,7 @@ class GoogleTranslate(object):
             'languages': None,
         }
         self.api_urls = {
-            'translate': 'https://translate.google.com/translate_a/t?client=t&ie=UTF-8&oe=UTF-8',
+            'translate': 'https://translate.google.com/translate_a/single?client=t&ie=UTF-8&oe=UTF-8&dt=t',
         }
         if not source_lang:
             source_lang = 'auto'

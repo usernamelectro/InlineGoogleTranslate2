@@ -3,9 +3,9 @@ Sublime Text Google Translate Plugin
 
 For SublimeText 2 & 3, support proxy `PROXY_TYPE_SOCKS5` `PROXY_TYPE_SOCKS4` `PROXY_TYPE_HTTP`
 
-**Version:** 2.0.0
+**Version:** 2.1.0
 
-![Sublime Text Google Translate Plugin](https://raw.githubusercontent.com/MtimerCMS/SublimeText-Google-Translate-Plugin/master/GoogleTranslate.gif)
+![Sublime Text Google Translate Plugin](https://raw.githubusercontent.com/MTimer/SublimeText-Google-Translate-Plugin/master/GoogleTranslate.gif)
 ------------------
 
 Install:
@@ -13,11 +13,11 @@ Install:
 
 **[Recommend] Package Control:** [Usage](https://sublime.wbond.net/docs/usage), `Package Control: Install Package` then search `Inline Google Translate`
 
-**Without Git:** Download the latest source from [GitHub](https://github.com/MtimerCMS/SublimeText-Google-Translate-Plugin) and copy the GoogleTranslate folder to your Sublime Text "Packages" directory.
+**Without Git:** Download the latest source from [GitHub](https://github.com/MTimer/SublimeText-Google-Translate-Plugin) and copy the GoogleTranslate folder to your Sublime Text "Packages" directory.
 
 **With Git:** Clone the repository in your Sublime Text "Packages" directory:
 
-    git clone https://github.com/MtimerCMS/SublimeText-Google-Translate-Plugin 'Inline Google Translate'
+    git clone https://github.com/MTimer/SublimeText-Google-Translate-Plugin 'Inline Google Translate'
 
 Folder name must be **Inline Google Translate** !!
 
@@ -108,7 +108,7 @@ SublimeText Google 翻译插件 支持 ST 2 和 3，支持各种代理！**GFW**
 
 @更多优秀项目 [下载插件中文版](http://dev.mtimecms.com)
 
-**当前版本:** 2.0.0
+**当前版本:** 2.1.0
 
 ------------------
 
@@ -117,11 +117,11 @@ SublimeText Google 翻译插件 支持 ST 2 和 3，支持各种代理！**GFW**
 
 **[推荐] Package Control:** [使用方法](https://sublime.wbond.net/docs/usage), `Package Control: Install Package` 然后搜索 `Inline Google Translate`
 
-**不用 Git:** 从 [GitHub](https://github.com/MtimerCMS/SublimeText-Google-Translate-Plugin) 下载 GoogleTranslate 文件复制到 Sublime Text "程序包" 目录。
+**不用 Git:** 从 [GitHub](https://github.com/MTimer/SublimeText-Google-Translate-Plugin) 下载 GoogleTranslate 文件复制到 Sublime Text "程序包" 目录。
 
 **手动 Git:** 克隆到 Sublime Text "程序包" 目录:
 
-    git clone https://github.com/MtimerCMS/SublimeText-Google-Translate-Plugin 'Inline Google Translate'
+    git clone https://github.com/MTimer/SublimeText-Google-Translate-Plugin 'Inline Google Translate'
 
 目录名必须为 **Inline Google Translate** !!
 

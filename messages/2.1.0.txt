@@ -1,0 +1,31 @@
+Congratulations! Package updated!
+=================================
+
+**Current Version:** 2.1.0
+
+Updates:
+=======
+
+1. Google api
+2. repository address
+
+
+MTimer: www.mtimer.cn
+
+
+------------------
+
+
+
+Sublime Text Google 翻译插件
+==========================
+
+**当前版本:** 2.1.0
+
+------------------
+
+更新:
+====
+
+1. Google API
+2. 插件地址

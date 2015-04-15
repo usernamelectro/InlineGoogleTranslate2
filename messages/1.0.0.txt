@@ -2,7 +2,7 @@ sublime-google-translate
 ========================
 Google Translate plugin for SublimeText 2 and 3
 
-@Github https://github.com/MtimerCMS/SublimeText-Google-Translate-Plugin
+@Github https://github.com/MTimer/SublimeText-Google-Translate-Plugin
 
 Configure:
 ---------------
@@ -33,7 +33,7 @@ sublime-google-translate
 ========================
 Sublime Text Google 翻译插件 支持 ST 2 和 3
 
-@Github https://github.com/MtimerCMS/SublimeText-Google-Translate-Plugin
+@Github https://github.com/MTimer/SublimeText-Google-Translate-Plugin
 @微博 http://weibo.com/u/3488979130
 
 设置:

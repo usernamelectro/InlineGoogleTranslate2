@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # coding:utf-8
-# https://github.com/MtimerCMS/SublimeText-Google-Translate-Plugin
+# https://github.com/MTimer/SublimeText-Google-Translate-Plugin
 
 import urllib2
 import httplib
